@@ -17,6 +17,10 @@
       }
     }
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fcubria/lacanin.git"
+  },
   "keywords": [
     "lacan"
   ],

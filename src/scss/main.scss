@@ -3,3 +3,21 @@ input {
     display: block;
     margin-bottom: 1rem;
 }
+
+
+/* */
+table {
+    border-collapse: collapse;
+    border-left: 2px solid pink;
+    border-top: 2px solid pink;
+}
+th, td {
+    border-right: 2px solid pink;
+    border-bottom: 2px solid pink;
+}
+
+/* */
+.o-display-list {
+    // border: 2px solid pink;
+}
+
