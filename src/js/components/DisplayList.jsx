@@ -11,7 +11,8 @@ class DisplayList extends React.Component {
         super(props);
 
         this.state = {
-            values: props.values
+            values: props.values,
+            itemsOrder: {}
         }
 
         this.sort = this.sort.bind(this);
@@ -30,12 +31,17 @@ class DisplayList extends React.Component {
         let key = e.target.innerText;
         console.log(key)
 
+        let newItemsOrder = (typeof this.state.itemsOrder !== 'undefined') ? utils.cloneObject(this.state.itemsOrder) : {};
+
+        let order = (typeof newItemsOrder[key] !== 'undefined') ? - newItemsOrder[key] : 1;
+        newItemsOrder[key] = order;
         let newValues = this.state.values.sort((value1, value2) => {
-            return value1[key] < value2[key];
+            return order * value1[key] < order * value2[key];
         });
 
         this.setState({
-            values: newValues
+            values: newValues,
+            itemsOrder: newItemsOrder
         });
 
     }
@@ -43,8 +49,8 @@ class DisplayList extends React.Component {
     render () {
 
         let headers = [
-            <th key="a" onClick={this.sort}>word1</th>,
-            <th key="b" onClick={this.sort}>word2</th>
+            <th key="a" data-onClick={this.sort}>word1</th>,
+            <th key="b" data-onClick={this.sort}>word2</th>
         ];
         let rows = [];
     
@@ -68,7 +74,7 @@ class DisplayList extends React.Component {
             );
         });
     
-        return <div class="o-display-list">
+        return <div className="o-display-list">
             
             <table>
                 <thead>
