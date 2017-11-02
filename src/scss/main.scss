@@ -3,7 +3,17 @@ input {
     display: block;
     margin-bottom: 1rem;
 }
-
+[type='button'] {
+    display: inline;
+}
+.a-edit {
+    display: inline;
+    min-width: 300px;
+}
+textarea {
+    display: block;
+    min-width: 400px;
+}
 
 /* */
 table {

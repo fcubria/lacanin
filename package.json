@@ -62,6 +62,14 @@
     "webpack-merge": "^4.1.0"
   },
   "dependencies": {
+    "axios": "^0.17.0",
+    "body-parser": "^1.18.2",
+    "dotenv": "^4.0.0",
+    "express": "^4.16.2",
+    "foreman": "^2.0.0",
+    "marked": "^0.3.6",
+    "mongoose": "^4.12.5",
+    "nodemon": "^1.12.1",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-hot-loader": "^3.1.1"

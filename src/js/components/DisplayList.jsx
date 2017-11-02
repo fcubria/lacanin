@@ -29,14 +29,21 @@ class DisplayList extends React.Component {
 
     sort (e) {
         let key = e.target.innerText;
+        let newValues;
         console.log(key)
 
         let newItemsOrder = (typeof this.state.itemsOrder !== 'undefined') ? utils.cloneObject(this.state.itemsOrder) : {};
 
         let order = (typeof newItemsOrder[key] !== 'undefined') ? - newItemsOrder[key] : 1;
         newItemsOrder[key] = order;
-        let newValues = this.state.values.sort((value1, value2) => {
-            return order * value1[key] < order * value2[key];
+        // newValues = this.state.values.sort((value1, value2) => {
+        //     console.log('value1[' + "key" + ']');
+        //     console.log(value1[key] + ':' + value2[key])
+        //     console.log( order * value1[key] < order * value2[key])
+        //     return order * value1[key] < order * value2[key];
+        // });
+        newValues = this.state.values.sort((value1, value2) => {
+            return (order === -1) ? value1[key] < value2[key] : value1[key] > value2[key];
         });
 
         this.setState({
@@ -49,8 +56,8 @@ class DisplayList extends React.Component {
     render () {
 
         let headers = [
-            <th key="a" data-onClick={this.sort}>word1</th>,
-            <th key="b" data-onClick={this.sort}>word2</th>
+            <th key="a" onClick={this.sort}>word1</th>,
+            <th key="b" onClick={this.sort}>word2</th>
         ];
         let rows = [];
     

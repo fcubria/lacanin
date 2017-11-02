@@ -98,6 +98,10 @@ describe('compareStrings', () => {
         ]);
     });
 
+    
+    it('getSentencesFromText devuelve un array', function () {
+        expect(words.getSentencesFromText('El camión es grande, pero la vaca más. Aunque yo prefiero el chocolate, la verdad.')).to.be.an('array');
+    });
 
 });
 

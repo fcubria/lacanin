@@ -18,49 +18,49 @@ class Words {
     /** originales lacanin */
     calculaSemejanza (palabra1, palabra2) {
 
-    /*
-      Antes de nada hay que ver si la semejanza se ha calculado ya, buscando en el array semejanzas (por ejemplo semejanzas['puertadespertador'] = 16;)
-      Si existe se devuelve el valor que existe, si no se calcula y se añade.
-      ... Al principio de la aplicación se tiene que leer el array, y al final comitearlo ¿?
-    */
+        /*
+        Antes de nada hay que ver si la semejanza se ha calculado ya, buscando en el array semejanzas (por ejemplo semejanzas['puertadespertador'] = 16;)
+        Si existe se devuelve el valor que existe, si no se calcula y se añade.
+        ... Al principio de la aplicación se tiene que leer el array, y al final comitearlo ¿?
+        */
 
-    var valor = 0;
+        var valor = 0;
 
-    var subpalabras1 = this.getSubpalabras(palabra1);
-    var subpalabras2 = this.getSubpalabras(palabra2);
+        var subpalabras1 = this.getSubpalabras(palabra1);
+        var subpalabras2 = this.getSubpalabras(palabra2);
 
-    /*
-        comparación: (ejemplo camisa-camisón)
-        · se coge la palabra más corta o una cualquiera de ella si son de igual longitud
-        · número de letras de esta palabra: 6
-          se prueba con la palabra completa (6)
-          - ¿camisa contenida en camisón? => no, así que nada
-          - se prueba con las palabras que se pueden formar con 5 letras:
-            - ¿camis contenida en camisón? => si, así que se suma 5
-            - amisa => no
-          - se prueba con las palabras de cuatro letras
-              · para todas ellas se hace la misma comprobación de arriba
-          - se prueba con las palabras de tres letras
-          - se prueba con las palabras de dos letras (mínimo)
+        /*
+            comparación: (ejemplo camisa-camisón)
+            · se coge la palabra más corta o una cualquiera de ella si son de igual longitud
+            · número de letras de esta palabra: 6
+            se prueba con la palabra completa (6)
+            - ¿camisa contenida en camisón? => no, así que nada
+            - se prueba con las palabras que se pueden formar con 5 letras:
+                - ¿camis contenida en camisón? => si, así que se suma 5
+                - amisa => no
+            - se prueba con las palabras de cuatro letras
+                · para todas ellas se hace la misma comprobación de arriba
+            - se prueba con las palabras de tres letras
+            - se prueba con las palabras de dos letras (mínimo)
 
-    */
+        */
 
-    for (var i = 0; i < subpalabras1.length; i++) {
-      var p1 = subpalabras1[i];
-      for (var j = 0; j < subpalabras2.length; j++) {
-        var p2 = subpalabras2[j];
-        // console.log('se comparan: ' + p1 + '; ' + p2);
-        if (p1 === p2) {
+        for (var i = 0; i < subpalabras1.length; i++) {
+        var p1 = subpalabras1[i];
+        for (var j = 0; j < subpalabras2.length; j++) {
+            var p2 = subpalabras2[j];
             // console.log('se comparan: ' + p1 + '; ' + p2);
-            // console.log('Son iguales los fragmentos, se va a sumar ' + p1.length);
-            valor += p1.length;
+            if (p1 === p2) {
+                // console.log('se comparan: ' + p1 + '; ' + p2);
+                // console.log('Son iguales los fragmentos, se va a sumar ' + p1.length);
+                valor += p1.length;
+            }
         }
-      }
-    }
+        }
 
-    return valor;
+        return valor;
 
-  } // calculaSemejanza
+    } // calculaSemejanza
 
     getSubpalabras ( palabra, min ) {
 
@@ -192,6 +192,16 @@ class Words {
            pairs[i] = str.substring(i, i + 2);
        }
        return pairs;
+    }
+
+    getSentencesFromText (text) {
+        let result = text.match( /[^\.!\?]+[\.!\?]+/g );
+        
+        for (let i = 0; i < result.length; i++) {
+            result[i] = result[i].trim();
+        }
+        console.log(result);
+        return result;
     }
 
     /** varios */
